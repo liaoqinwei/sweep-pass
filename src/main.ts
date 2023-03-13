@@ -6,7 +6,7 @@ import SweepPass from './sweepPass/SweepPass';
 
 function main() {
   const canvas = document.querySelector('#render')!;
-  const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
+  const renderer = new THREE.WebGLRenderer({ canvas });
   const fov = 75;
   const aspect = 2;  // the canvas default
   const near = 0.1;
