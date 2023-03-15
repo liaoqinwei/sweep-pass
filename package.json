@@ -1,11 +1,16 @@
 {
-  "name": "sweep-pass",
+  "name": "@liaoqinwei/sweep-pass",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "src/index.js"
+  ],
+  "main": "",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:publish":"tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -14,6 +19,9 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "three": "^0.150.1"
+  },
+  "peerDependencies": {
     "three": "^0.150.1"
   }
 }

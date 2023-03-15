@@ -1,12 +1,12 @@
 import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import SweepPass from './sweepPass/SweepPass';
 
 function main() {
   const canvas = document.querySelector('#render')!;
-  const renderer = new THREE.WebGLRenderer({ canvas });
+  const renderer = new THREE.WebGLRenderer({ canvas, logarithmicDepthBuffer: true });
   const fov = 75;
   const aspect = 2;  // the canvas default
   const near = 0.1;
@@ -41,22 +41,24 @@ function main() {
     return cube;
   }
 
-  const cubes = [
+  const cubes:any = [
   ];
   // plane
   {
-    const geo = new THREE.PlaneGeometry(40,40)
-    const material = new THREE.MeshBasicMaterial({color:0x555555})
-    const mesh = new THREE.Mesh(geo,material)
+    const geo = new THREE.PlaneGeometry(40, 40)
+    const material = new THREE.MeshBasicMaterial({ color: 0x555555 })
+    const mesh = new THREE.Mesh(geo, material)
     scene.add(mesh)
   }
   for (let i = 0; i < 100; i++) {
-    cubes.push(makeInstance(geometry, new THREE.Color().setHSL(Math.random() * .5 + .5, Math.random(), .5), new THREE.Vector3(THREE.MathUtils.randInt(-20, 20), THREE.MathUtils.randInt(-20, 20), THREE.MathUtils.randInt(0, 5))))
+    cubes.push(makeInstance(geometry, new THREE.Color().setHSL(Math.random() * .5 + .5, Math.random(), .5),
+      new THREE.Vector3(THREE.MathUtils.randInt(-20, 20), THREE.MathUtils.randInt(-20, 20), THREE.MathUtils.randInt(0, 5))))
   }
 
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera))
-  composer.addPass(new SweepPass(camera, scene))
+  const pass = new SweepPass(camera, scene,{})
+  composer.addPass(pass)
 
 
   function resizeRendererToDisplaySize(renderer: THREE.Renderer) {
@@ -85,7 +87,7 @@ function main() {
 
     cubes.forEach((cube, ndx) => {
       const speed = 1 + ndx * .1;
-      const rot = now * speed*.01;
+      const rot = now * speed * .01;
       cube.rotation.x = rot;
       cube.rotation.y = rot;
     });
