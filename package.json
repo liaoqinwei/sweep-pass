@@ -1,5 +1,6 @@
 {
   "name": "@liaoqinwei/sweep-pass",
+  "private": true,
   "version": "0.0.1",
   "type": "module",
   "description": "threejs scene scanning light.",

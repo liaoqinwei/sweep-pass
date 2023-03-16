@@ -2,6 +2,12 @@
 
 postprocessing plugin for threejs. The global sweeping plugin is currently implemented.
 
+## install
+
+```bash
+$ npm i @liaoqinwei/sweep-pass 
+```
+
 ## Use
 
 use SweepPass
