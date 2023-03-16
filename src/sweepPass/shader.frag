@@ -13,6 +13,8 @@ uniform mat4 worldPositionMat4;
 
 varying vec2 vUv;
 
+// postprocessing: logarithmic depth value to linear depth value
+// https://github.com/mrdoob/three.js/issues/23072
 float linearize_depth(in float depth) {
   float a = cameraFar / (cameraFar - cameraNear);
   float b = cameraFar * cameraNear / (cameraNear - cameraFar);

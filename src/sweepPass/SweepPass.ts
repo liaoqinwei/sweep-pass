@@ -104,6 +104,7 @@ export default class SweepPass extends Pass {
     this.uTime += deltaTime
     // depth
     renderer.setRenderTarget(this.renderTargetDepthBuffer);
+    renderer.clearDepth()
     renderer.render(this.scene, this.camera);
 
     this.sweepMaterial.uniforms.depthTextureSampler.value = this.renderTargetDepthBuffer.depthTexture

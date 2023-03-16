@@ -1,1 +1,8 @@
-./index.html
+index.html
+public
+tsconfig.json
+tsconfig.production.json
+vite.config.ts
+
+dist/**/*.ts
+dist/**/*.css

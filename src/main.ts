@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import SweepPass from './sweepPass/SweepPass';
+import SweepPass from './sweepPass/SweepPass.ts';
 
 function main() {
   const canvas = document.querySelector('#render')!;
